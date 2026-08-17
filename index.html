@@ -4,6 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Jesus Andres Ruiz — Mechanical Engineering Portfolio</title>
+<meta name="description" content="Mechanical engineering portfolio of Jesus Andres Ruiz — UTSA sophomore designing and fabricating the hip module and actuation systems for the OpenExo open-source lower-limb exoskeleton.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Jesus Andres Ruiz — Mechanical Engineering Portfolio">
+<meta property="og:description" content="Building wearable robotic hardware, one prototype at a time — OpenExo hip module design, fabrication, and testing.">
+<meta property="og:url" content="https://jandresruiz84.github.io/portfolio/">
+<meta property="og:image" content="https://jandresruiz84.github.io/portfolio/images/08-assembled-hip-module-full-view.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>%E2%9A%99%EF%B8%8F</text></svg>">
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap');
 
@@ -204,9 +212,24 @@
 
   .gallery{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:14px; margin-top:22px;}
   .gallery figure{margin:0; border:1px solid var(--line-soft); background:var(--bg); overflow:hidden;}
-  .gallery img{width:100%; height:200px; object-fit:cover; display:block; filter:grayscale(15%) contrast(1.05); transition:filter .2s, transform .3s;}
+  .gallery img{width:100%; height:200px; object-fit:cover; display:block; filter:grayscale(15%) contrast(1.05); transition:filter .2s, transform .3s; cursor:zoom-in;}
   .gallery figure:hover img{filter:grayscale(0%) contrast(1.1); transform:scale(1.03);}
   .gallery figcaption{font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--text-dim); padding:9px 12px; border-top:1px solid var(--line-soft);}
+
+  /* LIGHTBOX */
+  .lightbox{
+    position:fixed; inset:0; background:rgba(15,18,20,0.94); z-index:1000;
+    display:none; align-items:center; justify-content:center; flex-direction:column;
+    gap:16px; padding:40px; cursor:zoom-out;
+  }
+  .lightbox.open{display:flex;}
+  .lightbox img{max-width:90vw; max-height:78vh; object-fit:contain; border:1px solid var(--line); cursor:default;}
+  .lightbox .cap{font-family:'JetBrains Mono',monospace; font-size:13px; color:var(--text-dim); text-align:center; max-width:640px;}
+  .lightbox .close{
+    position:absolute; top:20px; right:28px; font-family:'JetBrains Mono',monospace;
+    font-size:24px; color:var(--text-dim); background:none; border:none; cursor:pointer;
+  }
+  .lightbox .close:hover{color:var(--cyan);}
 
   @media (max-width:640px){
     header.hero{padding:64px 0 44px;}
@@ -544,6 +567,32 @@
     <div class="foot-note">Jesus Andres Ruiz — Mechanical Engineering, UTSA Honors College — San Antonio, TX</div>
   </div>
 </footer>
+
+<div class="lightbox" id="lightbox">
+  <button class="close" id="lightbox-close" aria-label="Close">✕</button>
+  <img id="lightbox-img" src="" alt="">
+  <div class="cap" id="lightbox-cap"></div>
+</div>
+<script>
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const lightboxCap = document.getElementById('lightbox-cap');
+
+  document.querySelectorAll('.gallery img').forEach(img => {
+    img.addEventListener('click', () => {
+      lightboxImg.src = img.src;
+      lightboxImg.alt = img.alt;
+      lightboxCap.textContent = img.alt;
+      lightbox.classList.add('open');
+    });
+  });
+
+  function closeLightbox(){ lightbox.classList.remove('open'); }
+  lightbox.addEventListener('click', closeLightbox);
+  document.getElementById('lightbox-close').addEventListener('click', (e) => { e.stopPropagation(); closeLightbox(); });
+  lightboxImg.addEventListener('click', (e) => e.stopPropagation());
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
+</script>
 
 </body>
 </html>
