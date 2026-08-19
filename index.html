@@ -237,6 +237,19 @@
     .project-head{padding:20px 20px 16px;}
     .project-body{padding:18px 20px 22px;}
   }
+
+  @media print{
+    * { -webkit-print-color-adjust:exact !important; print-color-adjust:exact !important; filter:none !important; }
+    nav, .btnrow, .lightbox, .navtoggle { display:none !important; }
+    .gridbg { display:none !important; }
+    header.hero { padding:0 0 40px; }
+    section { padding:36px 0; }
+    .sec-head, .project, .tl-item, .skillblocks { page-break-inside:avoid; }
+    .specstrip .track { animation:none !important; transform:none !important; white-space:normal; display:flex; flex-wrap:wrap; }
+    .specstrip .track span:nth-child(n+9) { display:none; }
+    .gallery img { height:160px; }
+    .contact-row { gap:14px 20px; }
+  }
 </style>
 </head>
 <body>
