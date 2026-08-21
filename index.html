@@ -112,22 +112,6 @@
   .btn.primary:hover{background:#7ee0e2;}
   .btn:not(.primary):hover{border-color:var(--cyan); color:var(--cyan);}
 
-  /* spec strip - the signature element: a running dimension/tolerance readout */
-  .specstrip{
-    border-top:1px solid var(--line); border-bottom:1px solid var(--line);
-    background:var(--bg-panel);
-    overflow:hidden; white-space:nowrap; position:relative;
-  }
-  .specstrip .track{
-    display:inline-flex; gap:0; animation:scroll 38s linear infinite;
-  }
-  .specstrip:hover .track{animation-play-state:paused;}
-  .specstrip span{
-    font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--text-dim);
-    padding:12px 32px; border-right:1px solid var(--line-soft); white-space:nowrap;
-  }
-  .specstrip span b{color:var(--orange); font-weight:500;}
-  @keyframes scroll{ from{transform:translateX(0);} to{transform:translateX(-50%);} }
 
   section{padding:84px 0; position:relative; z-index:1;}
   .sec-head{display:flex; align-items:baseline; gap:16px; margin-bottom:44px;}
@@ -245,8 +229,6 @@
     header.hero { padding:0 0 40px; }
     section { padding:36px 0; }
     .sec-head, .project, .tl-item, .skillblocks { page-break-inside:avoid; }
-    .specstrip .track { animation:none !important; transform:none !important; white-space:normal; display:flex; flex-wrap:wrap; }
-    .specstrip .track span:nth-child(n+9) { display:none; }
     .gallery img { height:160px; }
     .contact-row { gap:14px 20px; }
   }
@@ -300,25 +282,6 @@
     </div>
   </div>
 </header>
-
-<div class="specstrip">
-  <div class="track mono">
-    <span>SHOULDER SCREW BORE <b>Ø6.35mm ±0.05</b></span>
-    <span>HOLE SPACING SPEC <b>6.00mm</b></span>
-    <span>MIN BEND RADIUS <b>1.6mm</b></span>
-    <span>ALUMINUM ALLOY <b>6061-T6</b></span>
-    <span>EXOSKELETON PLATFORM: INCLINE TEST GRADE <b>7.5°</b></span>
-    <span>ACTUATOR <b>AK60-6 / AK80</b></span>
-    <span>REINFORCEMENT <b>Continuous CF (Onyx)</b></span>
-    <span>SHOULDER SCREW BORE <b>Ø6.35mm ±0.05</b></span>
-    <span>HOLE SPACING SPEC <b>6.00mm</b></span>
-    <span>MIN BEND RADIUS <b>1.6mm</b></span>
-    <span>ALUMINUM ALLOY <b>6061-T6</b></span>
-    <span>EXOSKELETON PLATFORM: INCLINE TEST GRADE <b>7.5°</b></span>
-    <span>ACTUATOR <b>AK60-6 / AK80</b></span>
-    <span>REINFORCEMENT <b>Continuous CF (Onyx)</b></span>
-  </div>
-</div>
 
 <section id="projects">
   <div class="wrap">
