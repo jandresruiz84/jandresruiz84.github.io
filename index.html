@@ -11,239 +11,35 @@
 <meta property="og:url" content="https://jandresruiz84.github.io/">
 <meta property="og:image" content="https://jandresruiz84.github.io/images/08-assembled-hip-module-full-view.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>%E2%9A%99%EF%B8%8F</text></svg>">
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap');
-
-  :root{
-    --bg:#0F1214;
-    --bg-panel:#161A1D;
-    --line:#2A3034;
-    --line-soft:#20262A;
-    --paper:#E8E4D8;
-    --cyan:#5FD4D6;
-    --orange:#E8823C;
-    --text:#D8D6CE;
-    --text-dim:#8C9296;
-    --text-bright:#F4F2EA;
-  }
-  *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{
-    margin:0;
-    background:var(--bg);
-    color:var(--text);
-    font-family:'Inter',sans-serif;
-    line-height:1.6;
-  }
-  ::selection{background:var(--cyan);color:#0F1214;}
-
-  .mono{font-family:'JetBrains Mono',monospace;}
-
-  /* background grid */
-  .gridbg{
-    position:fixed; inset:0; z-index:0; pointer-events:none;
-    background-image:
-      linear-gradient(var(--line-soft) 1px, transparent 1px),
-      linear-gradient(90deg, var(--line-soft) 1px, transparent 1px);
-    background-size:48px 48px;
-    opacity:0.5;
-    -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 90%);
-    mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 90%);
-  }
-
-  .wrap{max-width:1040px; margin:0 auto; padding:0 28px; position:relative; z-index:1;}
-
-  /* NAV */
-  nav{
-    position:sticky; top:0; z-index:50;
-    background:rgba(15,18,20,0.88);
-    backdrop-filter:blur(8px);
-    border-bottom:1px solid var(--line);
-  }
-  nav .wrap{display:flex; align-items:center; justify-content:space-between; padding-top:16px; padding-bottom:16px;}
-  .brand{font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:16px; color:var(--text-bright); letter-spacing:0.02em; display:flex; align-items:center; gap:10px;}
-  .brand .dot{width:8px; height:8px; background:var(--cyan); border-radius:1px; box-shadow:0 0 8px var(--cyan);}
-  .navlinks{display:flex; gap:28px;}
-  .navlinks a{color:var(--text-dim); text-decoration:none; font-size:13px; font-family:'JetBrains Mono',monospace; letter-spacing:0.03em; transition:color .15s;}
-  .navlinks a:hover{color:var(--cyan);}
-  .navtoggle{display:none;}
-  @media (max-width:640px){
-    .navlinks{
-      display:none; position:absolute; top:100%; left:0; right:0;
-      flex-direction:column; gap:0; background:var(--bg-panel);
-      border-bottom:1px solid var(--line);
-    }
-    .navlinks.open{display:flex;}
-    .navlinks a{padding:14px 28px; border-top:1px solid var(--line-soft);}
-    .navtoggle{
-      display:flex; align-items:center; justify-content:center;
-      width:32px; height:32px; background:none; border:1px solid var(--line);
-      color:var(--text); cursor:pointer; padding:0;
-    }
-  }
-
-  /* HERO */
-  header.hero{padding:88px 0 64px; position:relative; z-index:1;}
-  .eyebrow{
-    font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--cyan);
-    letter-spacing:0.12em; text-transform:uppercase; margin-bottom:18px;
-    display:flex; align-items:center; gap:10px;
-  }
-  .eyebrow::before{content:'';width:22px;height:1px;background:var(--cyan);display:inline-block;}
-  h1{
-    font-family:'Space Grotesk',sans-serif; font-weight:700;
-    font-size:clamp(38px,6vw,64px); line-height:1.04; color:var(--text-bright);
-    margin:0 0 20px; letter-spacing:-0.01em;
-  }
-  h1 .accent{color:var(--cyan);}
-  .lede{font-size:18px; color:var(--text-dim); max-width:600px; margin:0 0 34px;}
-  .hero-meta{display:flex; flex-wrap:wrap; gap:10px 28px; margin-bottom:38px;}
-  .hero-meta div{font-family:'JetBrains Mono',monospace; font-size:12.5px; color:var(--text-dim);}
-  .hero-meta span{color:var(--text-bright);}
-  .btnrow{display:flex; gap:14px; flex-wrap:wrap;}
-  .btn{
-    font-family:'JetBrains Mono',monospace; font-size:13px; padding:12px 20px;
-    border:1px solid var(--line); color:var(--text); text-decoration:none;
-    display:inline-flex; align-items:center; gap:8px; transition:all .15s;
-    letter-spacing:0.02em;
-  }
-  .btn.primary{background:var(--cyan); color:#0F1214; border-color:var(--cyan); font-weight:500;}
-  .btn.primary:hover{background:#7ee0e2;}
-  .btn:not(.primary):hover{border-color:var(--cyan); color:var(--cyan);}
-
-
-  section{padding:84px 0; position:relative; z-index:1;}
-  .sec-head{display:flex; align-items:baseline; gap:16px; margin-bottom:44px;}
-  .sec-num{font-family:'JetBrains Mono',monospace; color:var(--orange); font-size:14px;}
-  .sec-title{font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:28px; color:var(--text-bright); margin:0;}
-  .sec-line{flex:1; height:1px; background:var(--line);}
-
-  /* PROJECT CARDS */
-  .project{
-    border:1px solid var(--line); background:var(--bg-panel);
-    margin-bottom:28px; position:relative; overflow:hidden;
-  }
-  .project::before{
-    content:''; position:absolute; top:0; left:0; width:3px; height:100%; background:var(--cyan);
-    opacity:0; transition:opacity .2s;
-  }
-  .project:hover::before{opacity:1;}
-  .project-head{
-    display:flex; justify-content:space-between; align-items:flex-start; gap:20px;
-    padding:26px 28px 20px; border-bottom:1px solid var(--line-soft); flex-wrap:wrap;
-  }
-  .project-tag{font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--orange); letter-spacing:0.08em; margin-bottom:8px; text-transform:uppercase;}
-  .project-title{font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:22px; color:var(--text-bright); margin:0;}
-  .project-date{font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--text-dim); white-space:nowrap; padding-top:4px;}
-  .project-body{padding:22px 28px 28px;}
-  .project-summary{color:var(--text-dim); font-size:15px; margin:0 0 20px; max-width:680px;}
-  .spec-grid{
-    display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
-    gap:1px; background:var(--line-soft); margin-bottom:22px; border:1px solid var(--line-soft);
-  }
-  .spec-cell{background:var(--bg); padding:12px 14px;}
-  .spec-cell .k{font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--text-dim); text-transform:uppercase; letter-spacing:0.06em; margin-bottom:4px;}
-  .spec-cell .v{font-family:'JetBrains Mono',monospace; font-size:13px; color:var(--cyan);}
-  .findings{list-style:none; margin:0; padding:0;}
-  .findings li{
-    display:flex; gap:12px; padding:10px 0; border-top:1px solid var(--line-soft); font-size:14.5px; color:var(--text);
-  }
-  .findings li:first-child{border-top:none;}
-  .findings li::before{content:'▸'; color:var(--orange); flex-shrink:0; font-size:12px; margin-top:3px;}
-
-  /* diagram visual element for hip module */
-  .diagram{
-    border:1px solid var(--line-soft); background:var(--bg); padding:24px;
-    margin-bottom:22px; display:flex; align-items:center; justify-content:center;
-  }
-
-  /* EXPERIENCE timeline */
-  .tl{border-left:1px solid var(--line); margin-left:6px; padding-left:32px;}
-  .tl-item{position:relative; padding-bottom:38px;}
-  .tl-item:last-child{padding-bottom:0;}
-  .tl-item::before{
-    content:''; position:absolute; left:-37px; top:4px; width:11px; height:11px;
-    background:var(--bg); border:2px solid var(--cyan); border-radius:50%;
-  }
-  .tl-role{font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:17px; color:var(--text-bright); margin:0 0 2px;}
-  .tl-org{font-family:'JetBrains Mono',monospace; font-size:12.5px; color:var(--cyan); margin-bottom:2px;}
-  .tl-date{font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--text-dim); margin-bottom:12px;}
-  .tl-item ul{margin:0; padding-left:18px; color:var(--text-dim); font-size:14.5px;}
-  .tl-item ul li{margin-bottom:6px;}
-  .tl-item ul li::marker{color:var(--orange);}
-
-  /* SKILLS */
-  .skillblocks{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1px; background:var(--line-soft); border:1px solid var(--line-soft);}
-  .skillblock{background:var(--bg-panel); padding:24px;}
-  .skillblock h4{font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--orange); text-transform:uppercase; letter-spacing:0.08em; margin:0 0 14px;}
-  .chiprow{display:flex; flex-wrap:wrap; gap:8px;}
-  .chip{
-    font-family:'JetBrains Mono',monospace; font-size:12.5px; color:var(--text);
-    border:1px solid var(--line); padding:6px 12px;
-  }
-
-  /* CONTACT / FOOTER */
-  footer{border-top:1px solid var(--line); padding:56px 0 40px;}
-  .contact-title{font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:32px; color:var(--text-bright); margin:0 0 14px;}
-  .contact-row{display:flex; gap:24px; flex-wrap:wrap; margin-top:26px;}
-  .contact-row a{color:var(--text); text-decoration:none; font-family:'JetBrains Mono',monospace; font-size:13.5px; border-bottom:1px solid var(--line); padding-bottom:3px; transition:color .15s, border-color .15s;}
-  .contact-row a:hover{color:var(--cyan); border-color:var(--cyan);}
-  .foot-note{margin-top:48px; font-family:'JetBrains Mono',monospace; font-size:11.5px; color:var(--text-dim);}
-
-
-
-
-  .gallery{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:14px; margin-top:22px;}
-  .gallery figure{margin:0; border:1px solid var(--line-soft); background:var(--bg); overflow:hidden;}
-  .gallery img{width:100%; height:200px; object-fit:cover; display:block; filter:grayscale(15%) contrast(1.05); transition:filter .2s, transform .3s; cursor:zoom-in;}
-  .gallery video{width:100%; height:200px; object-fit:cover; display:block; background:#000;}
-  .gallery figure:hover img{filter:grayscale(0%) contrast(1.1); transform:scale(1.03);}
-  .gallery figcaption{font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--text-dim); padding:9px 12px; border-top:1px solid var(--line-soft);}
-
-  /* LIGHTBOX */
-  .lightbox{
-    position:fixed; inset:0; background:rgba(15,18,20,0.94); z-index:1000;
-    display:none; align-items:center; justify-content:center; flex-direction:column;
-    gap:16px; padding:40px; cursor:zoom-out;
-  }
-  .lightbox.open{display:flex;}
-  .lightbox img{max-width:90vw; max-height:78vh; object-fit:contain; border:1px solid var(--line); cursor:default;}
-  .lightbox .cap{font-family:'JetBrains Mono',monospace; font-size:13px; color:var(--text-dim); text-align:center; max-width:640px;}
-  .lightbox .close{
-    position:absolute; top:20px; right:28px; font-family:'JetBrains Mono',monospace;
-    font-size:24px; color:var(--text-dim); background:none; border:none; cursor:pointer;
-  }
-  .lightbox .close:hover{color:var(--cyan);}
-
-  @media (max-width:640px){
-    header.hero{padding:64px 0 44px;}
-    section{padding:56px 0;}
-    .project-head{padding:20px 20px 16px;}
-    .project-body{padding:18px 20px 22px;}
-  }
-
-  @media print{
-    * { -webkit-print-color-adjust:exact !important; print-color-adjust:exact !important; filter:none !important; }
-    nav, .btnrow, .lightbox, .navtoggle { display:none !important; }
-    .gridbg { display:none !important; }
-    header.hero { padding:0 0 40px; }
-    section { padding:36px 0; }
-    .sec-head, .tl-item, .skillblocks { page-break-inside:avoid; }
-    .gallery figure { page-break-inside:avoid; }
-    .gallery img { height:160px; }
-    .contact-row { gap:14px 20px; }
-    .foot-note { margin-top:16px; }
-  }
-</style>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="stylesheet" href="styles.css">
+<script>
+  (function(){
+    var d = document.documentElement;
+    d.classList.add('js');
+    try {
+      if (sessionStorage.getItem('introSeen')) d.classList.add('no-intro');
+      else sessionStorage.setItem('introSeen', '1');
+    } catch (e) {}
+  })();
+</script>
 </head>
 <body>
+
+<div class="intro" id="intro" aria-hidden="true">
+  <svg class="logo intro-logo" viewBox="0 0 40 40"><g class="gear"><circle cx="20" cy="20" r="15"/><rect x="16.75" y="2" width="6.5" height="6.5" rx="1.5"/><rect x="16.75" y="2" width="6.5" height="6.5" rx="1.5" transform="rotate(45 20 20)"/><rect x="16.75" y="2" width="6.5" height="6.5" rx="1.5" transform="rotate(90 20 20)"/><rect x="16.75" y="2" width="6.5" height="6.5" rx="1.5" transform="rotate(135 20 20)"/><rect x="16.75" y="2" width="6.5" height="6.5" rx="1.5" transform="rotate(180 20 20)"/><rect x="16.75" y="2" width="6.5" height="6.5" rx="1.5" transform="rotate(225 20 20)"/><rect x="16.75" y="2" width="6.5" height="6.5" rx="1.5" transform="rotate(270 20 20)"/><rect x="16.75" y="2" width="6.5" height="6.5" rx="1.5" transform="rotate(315 20 20)"/></g><circle class="hub" cx="20" cy="20" r="12"/><text x="20" y="24" text-anchor="middle">JR</text></svg>
+  <div class="intro-name">Jesus Andres Ruiz</div>
+  <div class="intro-bar"><span></span></div>
+</div>
+<script>
+  document.getElementById('intro').addEventListener('click', function(){ this.classList.add('skip'); });
+</script>
 
 <div class="gridbg"></div>
 
 <nav>
   <div class="wrap">
-    <div class="brand"><span class="dot"></span>J. ANDRES RUIZ</div>
+    <a class="brand" href="#" aria-label="Jesus Andres Ruiz, home"><svg class="logo" viewBox="0 0 40 40" aria-hidden="true"><g class="gear"><circle cx="20" cy="20" r="15"/><rect x="16.75" y="2" width="6.5" height="6.5" rx="1.5"/><rect x="16.75" y="2" width="6.5" height="6.5" rx="1.5" transform="rotate(45 20 20)"/><rect x="16.75" y="2" width="6.5" height="6.5" rx="1.5" transform="rotate(90 20 20)"/><rect x="16.75" y="2" width="6.5" height="6.5" rx="1.5" transform="rotate(135 20 20)"/><rect x="16.75" y="2" width="6.5" height="6.5" rx="1.5" transform="rotate(180 20 20)"/><rect x="16.75" y="2" width="6.5" height="6.5" rx="1.5" transform="rotate(225 20 20)"/><rect x="16.75" y="2" width="6.5" height="6.5" rx="1.5" transform="rotate(270 20 20)"/><rect x="16.75" y="2" width="6.5" height="6.5" rx="1.5" transform="rotate(315 20 20)"/></g><circle class="hub" cx="20" cy="20" r="12"/><text x="20" y="24" text-anchor="middle">JR</text></svg></a>
     <button class="navtoggle" id="navtoggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
     <div class="navlinks" id="navlinks">
       <a href="#projects">Projects</a>
@@ -272,7 +68,7 @@
   <div class="wrap">
     <div class="eyebrow">Mechanical Engineering, UTSA</div>
     <h1>Jesus Andres <span class="accent">Ruiz</span></h1>
-    <p class="lede">I'm a mechanical engineering junior currently working at UTSA's Intelligent Systems and Bionics Engineering Lab, building the hip module and actuation hardware for a lower-limb exoskeleton.</p>
+    <p class="lede">I'm a mechanical engineering junior currently working at UTSA's Intelligent Systems and Bionics Engineering Lab.</p>
     <div class="hero-meta">
       <div>ROLE <span>Undergraduate Research Assistant</span></div>
       <div>LAB <span><a href="https://www.isabe-lab.com/home" target="_blank" style="color:var(--cyan); text-decoration:none; border-bottom:1px solid var(--cyan);">Intelligent Systems &amp; Bionics, UTSA ↗</a></span></div>
@@ -294,270 +90,87 @@
       <div class="sec-line"></div>
     </div>
 
-    <!-- FULL ASSEMBLY -->
-    <div class="project">
-      <div class="project-head">
-        <div>
-          <div class="project-tag">Exoskeleton, Full Assembly</div>
-          <h3 class="project-title">Full Mechanical Assembly</h3>
-        </div>
-        <div class="project-date">JUNE 2026 → PRESENT</div>
-      </div>
-      <div class="project-body">
-        <p class="project-summary">Assembled the complete mechanical chain for the lower-limb exoskeleton leg, combining the hip bracket, thigh link, and ankle module built in earlier iterations into one wearable structure.</p>
+    <div class="projects-grid">
 
-        <div class="spec-grid">
-          <div class="spec-cell"><div class="k">Status</div><div class="v">Mechanical complete</div></div>
-          <div class="spec-cell"><div class="k">Next step</div><div class="v">Motor electronics</div></div>
-          <div class="spec-cell"><div class="k">Role</div><div class="v">Assembly / Fit check</div></div>
+      <a class="project-card" href="projects/shoulder-mount-l-bracket.html">
+        <img class="pc-img" src="images/31-close-up-of-the-l-bracket-shoulder-mount.jpg" alt="Shoulder Mount L-Bracket Redesign" loading="lazy">
+        <div class="pc-badge">3D model</div>
+        <div class="pc-arrow">↗</div>
+        <div class="pc-body">
+          <div class="pc-tag">Robotic Arm, Structural</div>
+          <h3 class="pc-title">Shoulder Mount L-Bracket Redesign</h3>
+          <p class="pc-summary">Redesigned the shoulder mount after tap tests showed 2.6 Hz ringing for 4+ seconds, corrupting accelerometer data.</p>
+          <div class="pc-date">NOVEMBER 2026</div>
         </div>
+      </a>
 
-        <ul class="findings">
-          <li>Assembled the full mechanical chain from the hip bracket through the carbon fiber thigh link to the ankle module, combining parts fabricated across earlier iterations.</li>
-          <li>Fit-checked the assembly on body, adjusting strap tension and hip alignment for comfortable wear and clearance through a walking range of motion.</li>
-          <li>Next step is wiring and integrating the drive motor electronics to bring the assembly from a mechanical mockup to a powered system.</li>
-        </ul>
-
-        <div class="gallery">
-          <figure>
-            <img src="images/25-full-mechanical-assembly-of-the-lower-limb-exoskeleton.jpg" alt="Full mechanical assembly of the lower-limb exoskeleton" loading="lazy">
-          </figure>
-          <figure>
-            <img src="images/26-assembling-the-leg-module-while-seated.jpg" alt="Assembling the leg module while seated" loading="lazy">
-          </figure>
-          <figure>
-            <img src="images/27-full-assembly-fitted-and-worn-on-the-leg.jpg" alt="Full assembly fitted and worn on the leg" loading="lazy">
-          </figure>
-          <figure>
-            <video src="images/28-assembly-process-clip-1.mp4" controls playsinline preload="metadata" aria-label="Fitting the knee brace while seated"></video>
-          </figure>
-          <figure>
-            <video src="images/29-assembly-process-clip-2.mp4" controls playsinline preload="metadata" aria-label="Range of motion test wearing the full assembly"></video>
-          </figure>
+      <a class="project-card" href="projects/full-assembly.html">
+        <img class="pc-img" src="images/25-full-mechanical-assembly-of-the-lower-limb-exoskeleton.jpg" alt="Full Mechanical Assembly" loading="lazy">
+        <div class="pc-arrow">↗</div>
+        <div class="pc-body">
+          <div class="pc-tag">Exoskeleton, Full Assembly</div>
+          <h3 class="pc-title">Full Mechanical Assembly</h3>
+          <p class="pc-summary">Assembled the complete mechanical chain for the lower-limb exoskeleton leg into one wearable structure.</p>
+          <div class="pc-date">JUNE 2026 → PRESENT</div>
         </div>
-      </div>
+      </a>
+
+      <a class="project-card" href="projects/hip-module.html">
+        <img class="pc-img" src="images/08-assembled-hip-module-full-view.jpg" alt="Hip Module Design &amp; Fabrication" loading="lazy">
+        <div class="pc-arrow">↗</div>
+        <div class="pc-body">
+          <div class="pc-tag">Exoskeleton, Structural</div>
+          <h3 class="pc-title">Hip Module Design &amp; Fabrication</h3>
+          <p class="pc-summary">Design and manufacture of the hip module, from Fusion 360 CAD through FEA validation to final assembly.</p>
+          <div class="pc-date">MAY 2026 → PRESENT</div>
+        </div>
+      </a>
+
+      <a class="project-card" href="projects/bowden-cable.html">
+        <img class="pc-img" src="images/12-assembled-bowden-cable-transmission-with-motor-housing-front.jpg" alt="Bowden Cable Transmission: Ankle Actuation" loading="lazy">
+        <div class="pc-arrow">↗</div>
+        <div class="pc-body">
+          <div class="pc-tag">Exoskeleton, Actuation</div>
+          <h3 class="pc-title">Bowden Cable Transmission: Ankle Actuation</h3>
+          <p class="pc-summary">Prototyped the Bowden cable transmission that moves the ankle actuator off the distal leg.</p>
+          <div class="pc-date">MAY 2026 → PRESENT</div>
+        </div>
+      </a>
+
+      <a class="project-card" href="projects/hypersonics.html">
+        <img class="pc-img" src="images/24-mach-7-2-ludwieg-tube-wind-tunnel-apparatus.jpg" alt="Ludwieg Tube Wind Tunnel Testing" loading="lazy">
+        <div class="pc-arrow">↗</div>
+        <div class="pc-body">
+          <div class="pc-tag">UTSA Hypersonics Lab, Testing</div>
+          <h3 class="pc-title">Ludwieg Tube Wind Tunnel Testing</h3>
+          <p class="pc-summary">Fabricated precision diaphragms and ran instrumentation for a Mach 7.2 Ludwieg Tube wind tunnel.</p>
+          <div class="pc-date">JANUARY 2026 → MAY 2026</div>
+        </div>
+      </a>
+
+      <a class="project-card" href="projects/fsae-chassis-brakes.html">
+        <img class="pc-img" src="images/16-machining-the-first-caliper-to-rotor-spacer-on-the-lathe.jpg" alt="Chassis &amp; Brakes Fabrication" loading="lazy">
+        <div class="pc-arrow">↗</div>
+        <div class="pc-body">
+          <div class="pc-tag">FSAE, Chassis &amp; Brakes</div>
+          <h3 class="pc-title">Chassis &amp; Brakes Fabrication</h3>
+          <p class="pc-summary">Machined caliper spacers and modeled brake components for the 2025 FSAE competition car.</p>
+          <div class="pc-date">AUGUST 2025 → MAY 2026</div>
+        </div>
+      </a>
+
+      <a class="project-card" href="projects/military-drone.html">
+        <img class="pc-img" src="images/14-rendered-cad-assembly-of-the-military-drone-concept.jpg" alt="Military Drone Concept: Multi-Payload Quadcopter" loading="lazy">
+        <div class="pc-arrow">↗</div>
+        <div class="pc-body">
+          <div class="pc-tag">Class Project, CAD Design</div>
+          <h3 class="pc-title">Military Drone Concept</h3>
+          <p class="pc-summary">Fully modeled multi-payload quadcopter concept with deployable landing gear and a 2-axis gimbal.</p>
+          <div class="pc-date">CLASS FINAL PROJECT</div>
+        </div>
+      </a>
+
     </div>
-
-    <!-- HIP MODULE -->
-    <div class="project">
-      <div class="project-head">
-        <div>
-          <div class="project-tag">Exoskeleton, Structural</div>
-          <h3 class="project-title">Hip Module Design &amp; Fabrication</h3>
-        </div>
-        <div class="project-date">MAY 2026 → PRESENT</div>
-      </div>
-      <div class="project-body">
-        <p class="project-summary">Led design and manufacture of the hip module for the Exoskeleton platform, from Fusion 360 CAD through FEA validation, 3D printing, CNC machining, and final assembly, iterating through several real structural failures along the way.</p>
-
-        <div class="spec-grid">
-          <div class="spec-cell"><div class="k">CAD / Analysis</div><div class="v">Fusion 360, FEA</div></div>
-          <div class="spec-cell"><div class="k">Materials</div><div class="v">PLA → Onyx → CF</div></div>
-          <div class="spec-cell"><div class="k">Processes</div><div class="v">FDM, CF print, CNC</div></div>
-        </div>
-
-        <ul class="findings">
-          <li>Diagnosed a fractured PLA hip cuff and cracked cuff slider, tracing the failure to a high-stress zone at the strut interface. Those findings directly shaped a reinforced carbon fiber redesign across 4 components, each validated in Fusion 360 with static stress simulation.</li>
-          <li>Redesigned the hip abductor from scratch after the PLA prototype, iterating through 3 revisions before finalizing it as a machined, anodized 6061-T6 aluminum part, cutting peak von Mises stress 20% and widening internal fillets from 1.0 to 1.6 mm for CNC tooling.</li>
-          <li>Milled and hand-finished carbon fiber struts in the machine shop, working through drilling-speed failures (one strut cracked) and post-processing exposed fiber for safe wear.</li>
-          <li>Caught and corrected a 200-micron shoulder screw bore tolerance issue caused by anodizing buildup on outsourced aluminum parts before it reached final assembly.</li>
-          <li>Designed custom motor mounts for both AK60-6 and AK80 actuators to validate fit against the strut assembly on a mechanical breadboard.</li>
-          <li>Machined and anodized the abduction bracket in 6061-T6 aluminum, the finished version of the part after resolving tolerance and hole-spacing issues found in earlier iterations.</li>
-        </ul>
-        <div class="gallery">
-          <figure>
-            <img src="images/01-fusion-360-cad-model-of-abduction-leg-block.jpg" alt="Fusion 360 CAD model of abduction leg block" loading="lazy">
-          </figure>
-          <figure>
-            <img src="images/02-fusion-360-cad-model-of-ak60-6-motor-bracket.jpg" alt="3D printed thigh cuff shell" loading="lazy">
-          </figure>
-          <figure>
-            <img src="images/03-fea-static-stress-simulation-of-motor-bracket.jpg" alt="Starting FEA analysis on a solid version of the hip abductor" loading="lazy">
-          </figure>
-          <figure>
-            <img src="images/04-milling-holes-into-carbon-fiber-strut-on-mill.jpg" alt="Milling holes into carbon fiber strut on mill" loading="lazy">
-          </figure>
-          <figure>
-            <img src="images/05-3d-printed-thigh-cuff-shell.jpg" alt="Carbon fiber ankle strut" loading="lazy">
-          </figure>
-          <figure>
-            <img src="images/07-assembled-hip-module-worn-on-leg.jpg" alt="Assembled AK60-6 and AK80 motor mounts" loading="lazy">
-          </figure>
-          <figure>
-            <img src="images/08-assembled-hip-module-full-view.jpg" alt="Assembled hip module full view" loading="lazy">
-          </figure>
-          <figure>
-            <img src="images/09-anodized-6061-t6-aluminum-abduction-bracket.jpg" alt="Anodized 6061-T6 aluminum abduction bracket" loading="lazy">
-          </figure>
-        </div>
-      </div>
-    </div>
-
-    <!-- BOWDEN CABLE -->
-    <div class="project">
-      <div class="project-head">
-        <div>
-          <div class="project-tag">Exoskeleton, Actuation</div>
-          <h3 class="project-title">Bowden Cable Transmission: Ankle Actuation</h3>
-        </div>
-        <div class="project-date">MAY 2026 → PRESENT</div>
-      </div>
-      <div class="project-body">
-        <p class="project-summary">Prototyped the Bowden cable transmission that moves the 485 g ankle actuator off the distal leg to sit proximally instead, directly cutting the distal mass a wearer has to swing with every step.</p>
-
-        <div class="spec-grid">
-          <div class="spec-cell"><div class="k">Function</div><div class="v">Remote actuation</div></div>
-          <div class="spec-cell"><div class="k">Insert material</div><div class="v">TPU (flexible)</div></div>
-          <div class="spec-cell"><div class="k">Variants tested</div><div class="v">Tapered / Straight</div></div>
-          <div class="spec-cell"><div class="k">Guide</div><div class="v">Dual carbon fiber tube</div></div>
-        </div>
-
-        <ul class="findings">
-          <li>Designed, printed, and tested two TPU cable insert geometries (tapered and straight), selecting the tapered design for better cable routing and fit.</li>
-          <li>Assembled the full carriage: sliding rail, motor mount plate, and dual-tube guide block, iterating through early print failures to improve reliability.</li>
-          <li>Working with graduate researchers on the broader transmission system, contributing prototype design and hands-on assembly.</li>
-        </ul>
-
-        <div class="gallery">
-          <figure>
-            <img src="images/06-assembled-ak60-6-and-ak80-motor-mounts-on-breadboard-plate.jpg" alt="3D printed ankle footplate" loading="lazy">
-          </figure>
-          <figure>
-            <img src="images/10-exploded-component-diagram-of-bowden-cable-transmission-with.jpg" alt="Exploded component diagram of Bowden cable transmission with material callouts" loading="lazy">
-          </figure>
-          <figure>
-            <img src="images/11-four-3d-printed-tpu-cable-inserts-tapered-and-straight-varia.jpg" alt="Four 3D printed TPU cable inserts, tapered and straight variants" loading="lazy">
-          </figure>
-          <figure>
-            <img src="images/12-assembled-bowden-cable-transmission-with-motor-housing-front.jpg" alt="Assembled Bowden cable transmission with motor housing, front view" loading="lazy">
-          </figure>
-          <figure>
-            <img src="images/13-assembled-bowden-cable-transmission-with-motor-housing-back.jpg" alt="Assembled Bowden cable transmission with motor housing, back view" loading="lazy">
-          </figure>
-        </div>
-      </div>
-    </div>
-
-    <!-- HYPERSONICS LAB -->
-    <div class="project">
-      <div class="project-head">
-        <div>
-          <div class="project-tag">UTSA Hypersonics Lab, Testing</div>
-          <h3 class="project-title">Ludwieg Tube Wind Tunnel Testing</h3>
-        </div>
-        <div class="project-date">JANUARY 2026 → MAY 2026</div>
-      </div>
-      <div class="project-body">
-        <p class="project-summary">Supported hypersonic flow testing on a Mach 7.2 Ludwieg Tube wind tunnel, fabricating precision diaphragms, prepping instrumentation, and aligning a laser-based Schlieren imaging system to visualize shock waves.</p>
-
-        <div class="spec-grid">
-          <div class="spec-cell"><div class="k">Facility</div><div class="v">Mach 7.2 Ludwieg Tube</div></div>
-          <div class="spec-cell"><div class="k">Diaphragm material</div><div class="v">Aluminum</div></div>
-          <div class="spec-cell"><div class="k">Diagnostics</div><div class="v">Schlieren imaging</div></div>
-          <div class="spec-cell"><div class="k">Role</div><div class="v">Research Volunteer</div></div>
-        </div>
-
-        <ul class="findings">
-          <li>Milled 50+ precision diaphragms for a Mach 7.2 Ludwieg tube, setting burst pressures of 200 to 400 psi through material thickness and scored groove depth.</li>
-          <li>Supported graduate researchers across 30+ wind tunnel runs, aligning laser-based Schlieren imaging to visualize shock waves and prepare instrumentation for data collection.</li>
-        </ul>
-
-        <div class="gallery">
-          <figure>
-            <img src="images/21-precision-diaphragm-machined-for-the-ludwieg-tube-wind-tunnel.jpg" alt="Precision diaphragm machined for the Ludwieg Tube wind tunnel" loading="lazy">
-          </figure>
-          <figure>
-            <img src="images/22-driver-tube-control-monitor-and-diaphragm-section-flange.jpg" alt="Driver tube control monitor and diaphragm section flange" loading="lazy">
-          </figure>
-          <figure>
-            <img src="images/23-schlieren-imaging-setup-with-green-laser-alignment.jpg" alt="Schlieren imaging setup with green laser alignment" loading="lazy">
-          </figure>
-          <figure>
-            <img src="images/24-mach-7-2-ludwieg-tube-wind-tunnel-apparatus.jpg" alt="Mach 7.2 Ludwieg Tube wind tunnel apparatus" loading="lazy">
-          </figure>
-        </div>
-      </div>
-    </div>
-
-    <!-- FSAE CHASSIS & BRAKES -->
-    <div class="project">
-      <div class="project-head">
-        <div>
-          <div class="project-tag">FSAE, Chassis &amp; Brakes</div>
-          <h3 class="project-title">Chassis &amp; Brakes Fabrication</h3>
-        </div>
-        <div class="project-date">AUGUST 2025 → MAY 2026</div>
-      </div>
-      <div class="project-body">
-        <p class="project-summary">Team Member on the UTSA Formula SAE chassis and brakes sub-team, supporting the 2025 competition vehicle build from spacer machining through chassis tube fabrication.</p>
-
-        <div class="spec-grid">
-          <div class="spec-cell"><div class="k">Role</div><div class="v">Chassis / Brakes</div></div>
-          <div class="spec-cell"><div class="k">Sub-team</div><div class="v">5-person</div></div>
-          <div class="spec-cell"><div class="k">Processes</div><div class="v">Mill, Lathe, Mig/Tig</div></div>
-          <div class="spec-cell"><div class="k">Software</div><div class="v">SolidWorks (GD&amp;T)</div></div>
-        </div>
-
-        <ul class="findings">
-          <li>Designed and machined 4 aluminum caliper spacers for the 2025 competition car, modeled in SolidWorks with GD&amp;T thickness and parallelism callouts, then turned and faced them on the lathe to keep pad contact even and rotor clearance consistent across all four corners.</li>
-          <li>Collaborated with a 5-person chassis and brakes sub-team to iterate designs under FSAE competition constraints, supporting fitment checks and assembly during vehicle build.</li>
-        </ul>
-
-        <div class="gallery">
-          <figure>
-            <img src="images/16-machining-the-first-caliper-to-rotor-spacer-on-the-lathe.jpg" alt="Machining the first caliper-to-rotor spacer on the lathe" loading="lazy">
-          </figure>
-          <figure>
-            <img src="images/17-mig-tig-welding-a-chassis-tube-joint.jpg" alt="Mig/Tig welding a chassis tube joint" loading="lazy">
-          </figure>
-          <figure>
-            <img src="images/18-team-starting-chassis-tube-fabrication.jpg" alt="Team starting chassis tube fabrication" loading="lazy">
-          </figure>
-          <figure>
-            <img src="images/19-engine-mounted-on-a-test-jig-to-begin-tuning.jpg" alt="Engine mounted on a test jig to begin tuning" loading="lazy">
-          </figure>
-          <figure>
-            <img src="images/20-tearing-down-a-single-piston-engine-to-learn-how-it-operates.jpg" alt="Tearing down a single-piston engine to learn how it operates" loading="lazy">
-          </figure>
-        </div>
-      </div>
-    </div>
-
-    <!-- MILITARY DRONE PROJECT -->
-    <div class="project">
-      <div class="project-head">
-        <div>
-          <div class="project-tag">Class Project, CAD Design</div>
-          <h3 class="project-title">Military Drone Concept: Multi-Payload Quadcopter</h3>
-        </div>
-        <div class="project-date">CLASS FINAL PROJECT</div>
-      </div>
-      <div class="project-body">
-        <p class="project-summary">Designed a fully modeled (non-functional) quadcopter concept in SolidWorks as a team final project, featuring a deployable landing leg mechanism, a 2-axis camera gimbal, and mounted payload modules including a flashlight, flare, and laser pointer.</p>
-
-        <div class="spec-grid">
-          <div class="spec-cell"><div class="k">Software</div><div class="v">SolidWorks</div></div>
-          <div class="spec-cell"><div class="k">Type</div><div class="v">Design Concept (Non-Functional)</div></div>
-          <div class="spec-cell"><div class="k">Team</div><div class="v">Group Project</div></div>
-        </div>
-
-        <ul class="findings">
-          <li>Modeled a full quadcopter assembly including body shell, four frame arms, motors, propellers, and a hinged multi-leg landing gear system.</li>
-          <li>Helped design a 2-axis camera gimbal assembly (yaw-to-roll and pitch-to-roll elbow joints) to stabilize a mounted camera module, as part of a 4-person team.</li>
-          <li>Integrated deployable payload modules (a flashlight, flare, and laser pointer), each mounted via custom clamp holders on the frame.</li>
-        </ul>
-
-        <div class="gallery">
-          <figure>
-            <img src="images/14-rendered-cad-assembly-of-the-military-drone-concept.jpg" alt="Rendered CAD assembly of the military drone concept" loading="lazy">
-          </figure>
-          <figure>
-            <img src="images/15-exploded-view-engineering-drawing-with-bill-of-materials.jpg" alt="Exploded view engineering drawing with bill of materials" loading="lazy">
-          </figure>
-        </div>
-      </div>
-    </div>
-
   </div>
 </section>
 
@@ -689,30 +302,26 @@
   </div>
 </footer>
 
-<div class="lightbox" id="lightbox">
-  <button class="close" id="lightbox-close" aria-label="Close">✕</button>
-  <img id="lightbox-img" src="" alt="">
-  <div class="cap" id="lightbox-cap"></div>
-</div>
 <script>
-  const lightbox = document.getElementById('lightbox');
-  const lightboxImg = document.getElementById('lightbox-img');
-  const lightboxCap = document.getElementById('lightbox-cap');
-
-  document.querySelectorAll('.gallery img').forEach(img => {
-    img.addEventListener('click', () => {
-      lightboxImg.src = img.src;
-      lightboxImg.alt = img.alt;
-      lightboxCap.textContent = img.alt;
-      lightbox.classList.add('open');
+  (function(){
+    var items = document.querySelectorAll('.project-card, .tl-item, .skillblocks, .sec-head');
+    if (!('IntersectionObserver' in window)) return;
+    document.documentElement.classList.add('reveal-on');
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) {
+          var el = e.target;
+          el.classList.add('in'); io.unobserve(el);
+          setTimeout(function(){ el.style.transitionDelay = ''; }, 900);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    items.forEach(function(el, i){
+      if (el.classList.contains('project-card')) el.style.transitionDelay = ((i % 3) * 80) + 'ms';
+      el.classList.add('reveal');
+      io.observe(el);
     });
-  });
-
-  function closeLightbox(){ lightbox.classList.remove('open'); }
-  lightbox.addEventListener('click', closeLightbox);
-  document.getElementById('lightbox-close').addEventListener('click', (e) => { e.stopPropagation(); closeLightbox(); });
-  lightboxImg.addEventListener('click', (e) => e.stopPropagation());
-  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
+  })();
 </script>
 
 </body>

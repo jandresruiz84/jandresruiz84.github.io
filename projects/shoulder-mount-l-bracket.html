@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shoulder Mount L-Bracket Redesign | Jesus Andres Ruiz</title>
+<meta name="description" content="Redesigned the shoulder mounting bracket for a lab robotic arm, raising the dominant resonance from 2.6 Hz to 4.5 Hz and cutting vibration settling time from over 4 seconds to about 1 second.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Shoulder Mount L-Bracket Redesign | Jesus Andres Ruiz">
+<meta property="og:description" content="Redesigned the shoulder mounting bracket for a lab robotic arm, raising the dominant resonance from 2.6 Hz to 4.5 Hz and cutting vibration settling time from over 4 seconds to about 1 second.">
+<meta property="og:url" content="https://jandresruiz84.github.io/projects/shoulder-mount-l-bracket.html">
+<meta property="og:image" content="https://jandresruiz84.github.io/images/31-close-up-of-the-l-bracket-shoulder-mount.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="stylesheet" href="../styles.css">
+<script type="importmap">
+  { "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+  } }
+</script>
+<script type="module" src="../viewer.js"></script>
+</head>
+<body>
+
+<div class="gridbg"></div>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="../index.html" aria-label="Jesus Andres Ruiz, home"><svg class="logo" viewBox="0 0 40 40" aria-hidden="true"><g class="gear"><circle cx="20" cy="20" r="15"/><rect x="16.75" y="2" width="6.5" height="6.5" rx="1.5"/><rect x="16.75" y="2" width="6.5" height="6.5" rx="1.5" transform="rotate(45 20 20)"/><rect x="16.75" y="2" width="6.5" height="6.5" rx="1.5" transform="rotate(90 20 20)"/><rect x="16.75" y="2" width="6.5" height="6.5" rx="1.5" transform="rotate(135 20 20)"/><rect x="16.75" y="2" width="6.5" height="6.5" rx="1.5" transform="rotate(180 20 20)"/><rect x="16.75" y="2" width="6.5" height="6.5" rx="1.5" transform="rotate(225 20 20)"/><rect x="16.75" y="2" width="6.5" height="6.5" rx="1.5" transform="rotate(270 20 20)"/><rect x="16.75" y="2" width="6.5" height="6.5" rx="1.5" transform="rotate(315 20 20)"/></g><circle class="hub" cx="20" cy="20" r="12"/><text x="20" y="24" text-anchor="middle">JR</text></svg></a>
+    <button class="navtoggle" id="navtoggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+    <div class="navlinks" id="navlinks">
+      <a href="../index.html#projects">Projects</a>
+      <a href="../index.html#experience">Experience</a>
+      <a href="../index.html#skills">Skills</a>
+      <a href="../index.html#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+<script>
+  const navtoggle = document.getElementById('navtoggle');
+  const navlinks = document.getElementById('navlinks');
+  navtoggle.addEventListener('click', () => {
+    const open = navlinks.classList.toggle('open');
+    navtoggle.setAttribute('aria-expanded', open);
+  });
+  navlinks.addEventListener('click', (e) => {
+    if (e.target.tagName === 'A') {
+      navlinks.classList.remove('open');
+      navtoggle.setAttribute('aria-expanded', 'false');
+    }
+  });
+</script>
+
+<div class="project-page-head">
+  <div class="wrap">
+    <a class="back-link" href="../index.html#projects">← Back to Projects</a>
+  </div>
+</div>
+
+<section style="padding-top:0;">
+  <div class="wrap">
+    <div class="project">
+      <div class="project-head">
+        <div>
+          <div class="project-tag">Robotic Arm, Structural</div>
+          <h1 class="project-title">Shoulder Mount L-Bracket Redesign</h1>
+        </div>
+        <div class="project-date">NOVEMBER 2026</div>
+      </div>
+      <div class="project-body">
+        <p class="project-summary">Redesigned the shoulder mounting bracket for the lab's robotic arm after tap tests showed the original ringing at about 2.6 Hz for more than 4 seconds after each impact, corrupting accelerometer data.</p>
+
+        <div class="spec-grid">
+          <div class="spec-cell"><div class="k">Old resonance</div><div class="v">~2.6 Hz</div></div>
+          <div class="spec-cell"><div class="k">New resonance</div><div class="v">~4.5 Hz</div></div>
+          <div class="spec-cell"><div class="k">Settling time</div><div class="v">4s → ~1s</div></div>
+          <div class="spec-cell"><div class="k">Validation</div><div class="v">6 taps × 3 poses</div></div>
+        </div>
+
+        <ul class="findings">
+          <li>Diagnosed the original bracket's low-frequency ringing (about 2.6 Hz, settling over 4 seconds after each tap) as a source of corrupted accelerometer data on the arm.</li>
+          <li>Iterated the bracket through 3 design revisions to stiffen the load path between the shoulder actuator and the first link.</li>
+          <li>Validated the redesign with instrumented tap tests, 6 taps per bracket across 3 arm poses (circle-centre, flexed, extended), raising the dominant resonance from about 2.6 Hz to about 4.5 Hz and cutting vibration settling time from over 4 seconds to roughly 1 second, a better than 3x improvement.</li>
+        </ul>
+
+        <div class="model3d">
+          <div class="model3d-bar">
+            <div class="model3d-title">Interactive 3D model</div>
+            <div class="model3d-tabs">
+              <button data-src="../models/l-bracket-t25-40.stl">Iteration 1</button>
+              <button data-src="../models/shoulder-bracket-v3.stl">Iteration 2</button>
+              <button class="active" data-src="../models/shoulder-motor-mount-v4.stl">Iteration 3</button>
+            </div>
+          </div>
+          <div class="model3d-stage">
+            <div class="model3d-status">Loading model…</div>
+            <div class="model3d-hint">Drag to rotate · Scroll or pinch to zoom</div>
+            <button class="model3d-reset" aria-label="Reset view">Reset view</button>
+          </div>
+        </div>
+
+        <div class="gallery">
+          <figure>
+            <img src="../images/30-robotic-arm-test-rig-with-shoulder-bracket.jpg" alt="Robotic arm test rig with shoulder bracket" loading="lazy">
+          </figure>
+          <figure>
+            <img src="../images/31-close-up-of-the-l-bracket-shoulder-mount.jpg" alt="Close-up of the L-bracket shoulder mount" loading="lazy">
+          </figure>
+          <figure>
+            <img src="../images/32-arm-in-circle-centre-test-pose.jpg" alt="Arm in circle-centre test pose" loading="lazy">
+          </figure>
+          <figure>
+            <img src="../images/33-arm-in-flexed-test-pose.jpg" alt="Arm in flexed test pose" loading="lazy">
+          </figure>
+          <figure>
+            <img src="../images/34-arm-in-extended-test-pose.jpg" alt="Arm in extended test pose" loading="lazy">
+          </figure>
+          <figure>
+            <img src="../images/35-tap-test-old-bracket-vs-new-bracket.png" alt="Tap test chart comparing old bracket and new bracket vibration response" loading="lazy">
+          </figure>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="sec-num" style="display:block; margin-bottom:10px;">CONTACT</div>
+    <h2 class="contact-title">Let's build something.</h2>
+    <p style="color:var(--text-dim); max-width:480px; margin:0;">Open to internship opportunities in mechanical design, robotics, and hardware engineering.</p>
+    <div class="contact-row">
+      <a href="mailto:jesus.ruiz4@my.utsa.edu">jesus.ruiz4@my.utsa.edu</a>
+      <a href="tel:+19562906269">(956) 290-6269</a>
+      <a href="https://www.linkedin.com/in/jesus-andres-ruiz-5855bb349" target="_blank">LinkedIn ↗</a>
+      <a href="https://www.isabe-lab.com/home" target="_blank">ISABEL Lab ↗</a>
+      <a href="../resume.pdf" target="_blank">Résumé ↗</a>
+    </div>
+    <div class="foot-note">Jesus Andres Ruiz, Mechanical Engineering, UTSA Honors College, San Antonio, TX</div>
+  </div>
+</footer>
+
+<div class="lightbox" id="lightbox">
+  <button class="close" id="lightbox-close" aria-label="Close">✕</button>
+  <img id="lightbox-img" src="" alt="">
+  <div class="cap" id="lightbox-cap"></div>
+</div>
+<script>
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const lightboxCap = document.getElementById('lightbox-cap');
+
+  document.querySelectorAll('.gallery img').forEach(img => {
+    img.addEventListener('click', () => {
+      lightboxImg.src = img.src;
+      lightboxImg.alt = img.alt;
+      lightboxCap.textContent = img.alt;
+      lightbox.classList.add('open');
+    });
+  });
+
+  function closeLightbox(){ lightbox.classList.remove('open'); }
+  lightbox.addEventListener('click', closeLightbox);
+  document.getElementById('lightbox-close').addEventListener('click', (e) => { e.stopPropagation(); closeLightbox(); });
+  lightboxImg.addEventListener('click', (e) => e.stopPropagation());
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
+</script>
+
+</body>
+</html>
