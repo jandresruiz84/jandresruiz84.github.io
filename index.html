@@ -12,6 +12,9 @@
 <meta property="og:image" content="https://jandresruiz84.github.io/images/08-assembled-hip-module-full-view.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Serif:ital,wght@0,500;0,600;1,500&display=swap">
 <link rel="stylesheet" href="styles.css">
 <script>
   (function(){
@@ -34,8 +37,6 @@
 <script>
   document.getElementById('intro').addEventListener('click', function(){ this.classList.add('skip'); });
 </script>
-
-<div class="gridbg"></div>
 
 <nav>
   <div class="wrap">
@@ -65,109 +66,105 @@
 </script>
 
 <header class="hero">
-  <div class="wrap">
-    <div class="eyebrow">Mechanical Engineering, UTSA</div>
-    <h1>Jesus Andres <span class="accent">Ruiz</span></h1>
-    <p class="lede">I'm a mechanical engineering junior currently working at UTSA's Intelligent Systems and Bionics Engineering Lab.</p>
-    <div class="hero-meta">
-      <div>ROLE <span>Undergraduate Research Assistant</span></div>
-      <div>LAB <span><a href="https://www.isabe-lab.com/home" target="_blank" style="color:var(--cyan); text-decoration:none; border-bottom:1px solid var(--cyan);">Intelligent Systems &amp; Bionics, UTSA ↗</a></span></div>
-      <div>ADVISOR <span>Dr. Binghan He</span></div>
+  <div class="wrap hero-grid">
+    <div class="hero-text">
+      <h1>Jesus Andres Ruiz</h1>
+      <p class="lede">I'm a mechanical engineering junior currently working at UTSA's Intelligent Systems and Bionics Engineering Lab.</p>
+      <dl class="titleblock">
+        <div><dt>Role</dt><dd>Undergraduate Research Assistant</dd></div>
+        <div><dt>Lab</dt><dd><a href="https://www.isabe-lab.com/home" target="_blank">Intelligent Systems &amp; Bionics, UTSA</a></dd></div>
+        <div><dt>Advisor</dt><dd>Dr. Binghan He</dd></div>
+        <div><dt>Graduation</dt><dd>May 2028</dd></div>
+      </dl>
+      <div class="btnrow">
+        <a class="btn primary" href="#projects">View Projects</a>
+        <a class="btn" href="resume.pdf" target="_blank">Résumé (PDF)</a>
+        <a class="btn" href="#contact">Contact</a>
+      </div>
     </div>
-    <div class="btnrow">
-      <a class="btn primary" href="#projects">View Projects ↓</a>
-      <a class="btn" href="resume.pdf" target="_blank">Download Résumé ↓</a>
-      <a class="btn" href="#contact">Get In Touch</a>
-    </div>
+    <figure class="hero-fig">
+      <img src="images/27-full-assembly-fitted-and-worn-on-the-leg.jpg" alt="Jesus wearing the full exoskeleton assembly during a fit check">
+      <figcaption><span>Fig. 1</span> Full exoskeleton leg assembly</figcaption>
+    </figure>
   </div>
 </header>
 
 <section id="projects">
   <div class="wrap">
     <div class="sec-head">
-      <span class="sec-num">01</span>
       <h2 class="sec-title">Projects</h2>
-      <div class="sec-line"></div>
     </div>
 
     <div class="projects-grid">
 
       <a class="project-card" href="projects/shoulder-mount-l-bracket.html">
         <img class="pc-img" src="images/31-close-up-of-the-l-bracket-shoulder-mount.jpg" alt="Shoulder Mount L-Bracket Redesign" loading="lazy">
-        <div class="pc-badge">3D model</div>
-        <div class="pc-arrow">↗</div>
         <div class="pc-body">
-          <div class="pc-tag">Robotic Arm, Structural</div>
-          <h3 class="pc-title">Shoulder Mount L-Bracket Redesign</h3>
+          <h3 class="pc-title">Shoulder Mount L-Bracket Redesign <span class="pc-badge">3D model</span></h3>
           <p class="pc-summary">Redesigned the shoulder mount after tap tests showed 2.6 Hz ringing for 4+ seconds, corrupting accelerometer data.</p>
-          <div class="pc-date">NOVEMBER 2026</div>
         </div>
+        <div class="pc-meta"><div class="pc-tag">Robotic Arm, Structural</div><div class="pc-date">Nov 2026</div></div>
+        <div class="pc-arrow" aria-hidden="true">→</div>
       </a>
 
       <a class="project-card" href="projects/full-assembly.html">
         <img class="pc-img" src="images/25-full-mechanical-assembly-of-the-lower-limb-exoskeleton.jpg" alt="Full Mechanical Assembly" loading="lazy">
-        <div class="pc-arrow">↗</div>
         <div class="pc-body">
-          <div class="pc-tag">Exoskeleton, Full Assembly</div>
           <h3 class="pc-title">Full Mechanical Assembly</h3>
           <p class="pc-summary">Assembled the complete mechanical chain for the lower-limb exoskeleton leg into one wearable structure.</p>
-          <div class="pc-date">JUNE 2026 → PRESENT</div>
         </div>
+        <div class="pc-meta"><div class="pc-tag">Exoskeleton, Full Assembly</div><div class="pc-date">Jun 2026 → Present</div></div>
+        <div class="pc-arrow" aria-hidden="true">→</div>
       </a>
 
       <a class="project-card" href="projects/hip-module.html">
         <img class="pc-img" src="images/08-assembled-hip-module-full-view.jpg" alt="Hip Module Design &amp; Fabrication" loading="lazy">
-        <div class="pc-arrow">↗</div>
         <div class="pc-body">
-          <div class="pc-tag">Exoskeleton, Structural</div>
           <h3 class="pc-title">Hip Module Design &amp; Fabrication</h3>
           <p class="pc-summary">Design and manufacture of the hip module, from Fusion 360 CAD through FEA validation to final assembly.</p>
-          <div class="pc-date">MAY 2026 → PRESENT</div>
         </div>
+        <div class="pc-meta"><div class="pc-tag">Exoskeleton, Structural</div><div class="pc-date">May 2026 → Present</div></div>
+        <div class="pc-arrow" aria-hidden="true">→</div>
       </a>
 
       <a class="project-card" href="projects/bowden-cable.html">
         <img class="pc-img" src="images/12-assembled-bowden-cable-transmission-with-motor-housing-front.jpg" alt="Bowden Cable Transmission: Ankle Actuation" loading="lazy">
-        <div class="pc-arrow">↗</div>
         <div class="pc-body">
-          <div class="pc-tag">Exoskeleton, Actuation</div>
           <h3 class="pc-title">Bowden Cable Transmission: Ankle Actuation</h3>
           <p class="pc-summary">Prototyped the Bowden cable transmission that moves the ankle actuator off the distal leg.</p>
-          <div class="pc-date">MAY 2026 → PRESENT</div>
         </div>
+        <div class="pc-meta"><div class="pc-tag">Exoskeleton, Actuation</div><div class="pc-date">May 2026 → Present</div></div>
+        <div class="pc-arrow" aria-hidden="true">→</div>
       </a>
 
       <a class="project-card" href="projects/hypersonics.html">
         <img class="pc-img" src="images/24-mach-7-2-ludwieg-tube-wind-tunnel-apparatus.jpg" alt="Ludwieg Tube Wind Tunnel Testing" loading="lazy">
-        <div class="pc-arrow">↗</div>
         <div class="pc-body">
-          <div class="pc-tag">UTSA Hypersonics Lab, Testing</div>
           <h3 class="pc-title">Ludwieg Tube Wind Tunnel Testing</h3>
           <p class="pc-summary">Fabricated precision diaphragms and ran instrumentation for a Mach 7.2 Ludwieg Tube wind tunnel.</p>
-          <div class="pc-date">JANUARY 2026 → MAY 2026</div>
         </div>
+        <div class="pc-meta"><div class="pc-tag">UTSA Hypersonics Lab, Testing</div><div class="pc-date">Jan 2026 → May 2026</div></div>
+        <div class="pc-arrow" aria-hidden="true">→</div>
       </a>
 
       <a class="project-card" href="projects/fsae-chassis-brakes.html">
         <img class="pc-img" src="images/16-machining-the-first-caliper-to-rotor-spacer-on-the-lathe.jpg" alt="Chassis &amp; Brakes Fabrication" loading="lazy">
-        <div class="pc-arrow">↗</div>
         <div class="pc-body">
-          <div class="pc-tag">FSAE, Chassis &amp; Brakes</div>
           <h3 class="pc-title">Chassis &amp; Brakes Fabrication</h3>
           <p class="pc-summary">Machined caliper spacers and modeled brake components for the 2025 FSAE competition car.</p>
-          <div class="pc-date">AUGUST 2025 → MAY 2026</div>
         </div>
+        <div class="pc-meta"><div class="pc-tag">FSAE, Chassis &amp; Brakes</div><div class="pc-date">Aug 2025 → May 2026</div></div>
+        <div class="pc-arrow" aria-hidden="true">→</div>
       </a>
 
       <a class="project-card" href="projects/military-drone.html">
         <img class="pc-img" src="images/14-rendered-cad-assembly-of-the-military-drone-concept.jpg" alt="Military Drone Concept: Multi-Payload Quadcopter" loading="lazy">
-        <div class="pc-arrow">↗</div>
         <div class="pc-body">
-          <div class="pc-tag">Class Project, CAD Design</div>
           <h3 class="pc-title">Military Drone Concept</h3>
           <p class="pc-summary">Fully modeled multi-payload quadcopter concept with deployable landing gear and a 2-axis gimbal.</p>
-          <div class="pc-date">CLASS FINAL PROJECT</div>
         </div>
+        <div class="pc-meta"><div class="pc-tag">Class Project, CAD Design</div><div class="pc-date">Class Final Project</div></div>
+        <div class="pc-arrow" aria-hidden="true">→</div>
       </a>
 
     </div>
@@ -177,51 +174,57 @@
 <section id="experience">
   <div class="wrap">
     <div class="sec-head">
-      <span class="sec-num">02</span>
       <h2 class="sec-title">Experience</h2>
-      <div class="sec-line"></div>
     </div>
 
-    <div class="tl">
-      <div class="tl-item">
-        <div class="tl-role">Teaching Assistant, Engineering Practice and Graphics</div>
-        <div class="tl-org">UTSA Department of Mechanical Engineering</div>
-        <div class="tl-date">AUGUST 2026 → PRESENT</div>
-        <ul>
-          <li>Hold office hours weekly, helping students hand-sketch orthographic, isometric, and section-view drawings with correct line conventions and dimensioning.</li>
-          <li>Grade homework and exams, providing written feedback on drawing accuracy, projection, and dimensioning errors.</li>
-        </ul>
-      </div>
+    <div class="xp">
+      <article class="xp-item">
+        <div class="xp-date">Aug 2026 → Present</div>
+        <div>
+          <h3 class="xp-role">Teaching Assistant, Engineering Practice and Graphics</h3>
+          <div class="xp-org">UTSA Department of Mechanical Engineering</div>
+          <ul>
+            <li>Hold office hours weekly, helping students hand-sketch orthographic, isometric, and section-view drawings with correct line conventions and dimensioning.</li>
+            <li>Grade homework and exams, providing written feedback on drawing accuracy, projection, and dimensioning errors.</li>
+          </ul>
+        </div>
+      </article>
 
-      <div class="tl-item">
-        <div class="tl-role">Undergraduate Research Assistant</div>
-        <div class="tl-org">Intelligent Systems &amp; Bionics Engineering Lab, Dr. Binghan He</div>
-        <div class="tl-date">MAY 2026 → PRESENT</div>
-        <ul>
-          <li>Fabricated and assembled exoskeleton hardware with graduate researchers, producing printed and machined parts for multiple lab projects.</li>
-          <li>Delivered weekly research progress updates to Dr. Binghan He, documenting design changes, test results, and next steps.</li>
-        </ul>
-      </div>
+      <article class="xp-item">
+        <div class="xp-date">May 2026 → Present</div>
+        <div>
+          <h3 class="xp-role">Undergraduate Research Assistant</h3>
+          <div class="xp-org">Intelligent Systems &amp; Bionics Engineering Lab, Dr. Binghan He</div>
+          <ul>
+            <li>Fabricated and assembled exoskeleton hardware with graduate researchers, producing printed and machined parts for multiple lab projects.</li>
+            <li>Delivered weekly research progress updates to Dr. Binghan He, documenting design changes, test results, and next steps.</li>
+          </ul>
+        </div>
+      </article>
 
-      <div class="tl-item">
-        <div class="tl-role">Undergraduate Research Volunteer</div>
-        <div class="tl-org">UTSA Hypersonics Lab</div>
-        <div class="tl-date">JANUARY 2026 → MAY 2026</div>
-        <ul>
-          <li>Milled 50+ precision diaphragms for a Mach 7.2 Ludwieg tube, setting burst pressures of 200 to 400 psi through material thickness and scored groove depth.</li>
-          <li>Supported graduate researchers across 30+ wind tunnel runs, aligning laser-based Schlieren imaging to visualize shock waves and prepare instrumentation for data collection.</li>
-        </ul>
-      </div>
+      <article class="xp-item">
+        <div class="xp-date">Jan 2026 → May 2026</div>
+        <div>
+          <h3 class="xp-role">Undergraduate Research Volunteer</h3>
+          <div class="xp-org">UTSA Hypersonics Lab</div>
+          <ul>
+            <li>Milled 50+ precision diaphragms for a Mach 7.2 Ludwieg tube, setting burst pressures of 200 to 400 psi through material thickness and scored groove depth.</li>
+            <li>Supported graduate researchers across 30+ wind tunnel runs, aligning laser-based Schlieren imaging to visualize shock waves and prepare instrumentation for data collection.</li>
+          </ul>
+        </div>
+      </article>
 
-      <div class="tl-item">
-        <div class="tl-role">Team Member - Chassis / Brakes</div>
-        <div class="tl-org">UTSA Formula Society of Automotive Engineers</div>
-        <div class="tl-date">AUGUST 2025 → MAY 2026</div>
-        <ul>
-          <li>Designed and machined 4 aluminum caliper spacers for the 2025 competition car, modeled in SolidWorks with GD&amp;T thickness and parallelism callouts, then turned and faced them on the lathe to keep pad contact even and rotor clearance consistent across all four corners.</li>
-          <li>Collaborated with a 5-person chassis and brakes sub-team to iterate designs under FSAE competition constraints, supporting fitment checks and assembly during vehicle build.</li>
-        </ul>
-      </div>
+      <article class="xp-item">
+        <div class="xp-date">Aug 2025 → May 2026</div>
+        <div>
+          <h3 class="xp-role">Team Member, Chassis / Brakes</h3>
+          <div class="xp-org">UTSA Formula Society of Automotive Engineers</div>
+          <ul>
+            <li>Designed and machined 4 aluminum caliper spacers for the 2025 competition car, modeled in SolidWorks with GD&amp;T thickness and parallelism callouts, then turned and faced them on the lathe to keep pad contact even and rotor clearance consistent across all four corners.</li>
+            <li>Collaborated with a 5-person chassis and brakes sub-team to iterate designs under FSAE competition constraints, supporting fitment checks and assembly during vehicle build.</li>
+          </ul>
+        </div>
+      </article>
     </div>
   </div>
 </section>
@@ -229,82 +232,38 @@
 <section id="skills">
   <div class="wrap">
     <div class="sec-head">
-      <span class="sec-num">03</span>
       <h2 class="sec-title">Skills</h2>
-      <div class="sec-line"></div>
     </div>
 
-    <div class="skillblocks">
-      <div class="skillblock">
-        <h4>CAD / Analysis</h4>
-        <div class="chiprow">
-          <span class="chip">Fusion 360</span>
-          <span class="chip">SolidWorks</span>
-          <span class="chip">FEA</span>
-        </div>
-      </div>
-      <div class="skillblock">
-        <h4>Manufacturing</h4>
-        <div class="chiprow">
-          <span class="chip">FDM 3D Printing</span>
-          <span class="chip">Continuous CF Printing</span>
-          <span class="chip">CNC Machining</span>
-          <span class="chip">Manual Milling</span>
-          <span class="chip">Lathe</span>
-          <span class="chip">Mig/Tig Welding</span>
-        </div>
-      </div>
-      <div class="skillblock">
-        <h4>Materials</h4>
-        <div class="chiprow">
-          <span class="chip">6061-T6 Aluminum</span>
-          <span class="chip">TPU</span>
-          <span class="chip">Carbon Fiber (Onyx)</span>
-        </div>
-      </div>
-      <div class="skillblock">
-        <h4>Programming</h4>
-        <div class="chiprow">
-          <span class="chip">Python</span>
-          <span class="chip">MATLAB</span>
-          <span class="chip">Arduino</span>
-          <span class="chip">ROS (learning)</span>
-          <span class="chip">Git / GitHub</span>
-        </div>
-      </div>
-      <div class="skillblock">
-        <h4>Engineering Practice</h4>
-        <div class="chiprow">
-          <span class="chip">Design Iteration</span>
-          <span class="chip">Technical Documentation</span>
-          <span class="chip">Failure Analysis</span>
-          <span class="chip">DFM</span>
-          <span class="chip">GD&amp;T</span>
-        </div>
-      </div>
-    </div>
+    <table class="skills-table">
+      <tr><th>Software &amp; Tools</th><td>SolidWorks, Fusion 360 (CAD + Simulation), MATLAB, Microsoft Office</td></tr>
+      <tr><th>Programming / Embedded</th><td>Arduino, Python, Git/GitHub</td></tr>
+      <tr><th>Manufacturing &amp; Design</th><td>Geometric Dimensioning and Tolerancing, Rapid Prototyping, Root Cause Analysis</td></tr>
+      <tr><th>Fabrication &amp; Tools</th><td>Fused Deposition Modeling &amp; Continuous Carbon Fiber Printing, Soldering, Welding, CNC Machining</td></tr>
+      <tr><th>Coursework</th><td>Statics, Dynamics, Thermodynamics I, Materials Engineering &amp; Lab, Engineering Practice &amp; Graphics</td></tr>
+    </table>
   </div>
 </section>
 
 <footer id="contact">
   <div class="wrap">
-    <div class="sec-num" style="display:block; margin-bottom:10px;">04 / CONTACT</div>
-    <h2 class="contact-title">Let's build something.</h2>
-    <p style="color:var(--text-dim); max-width:480px; margin:0;">Open to internship opportunities in mechanical design, robotics, and hardware engineering.</p>
-    <div class="contact-row">
-      <a href="mailto:jesus.ruiz4@my.utsa.edu">jesus.ruiz4@my.utsa.edu</a>
-      <a href="tel:+19562906269">(956) 290-6269</a>
-      <a href="https://www.linkedin.com/in/jesus-andres-ruiz-5855bb349" target="_blank">LinkedIn ↗</a>
-      <a href="https://www.isabe-lab.com/home" target="_blank">ISABEL Lab ↗</a>
-      <a href="resume.pdf" target="_blank">Résumé ↗</a>
+    <div class="sec-head">
+      <h2 class="sec-title">Contact</h2>
     </div>
-    <div class="foot-note">Jesus Andres Ruiz, Mechanical Engineering, UTSA Honors College, San Antonio, TX</div>
+    <p class="contact-lede">Open to internship opportunities in mechanical design, robotics, and hardware engineering.</p>
+    <dl class="titleblock contact-block">
+      <div><dt>Email</dt><dd><a href="mailto:jesus.ruiz4@my.utsa.edu">jesus.ruiz4@my.utsa.edu</a></dd></div>
+      <div><dt>Phone</dt><dd><a href="tel:+19562906269">(956) 290-6269</a></dd></div>
+      <div><dt>LinkedIn</dt><dd><a href="https://www.linkedin.com/in/jesus-andres-ruiz-5855bb349" target="_blank">jesus-andres-ruiz</a></dd></div>
+      <div><dt>Résumé</dt><dd><a href="resume.pdf" target="_blank">Download PDF</a></dd></div>
+    </dl>
+    <div class="foot-note">Jesus Andres Ruiz · Mechanical Engineering, UTSA Honors College · San Antonio, TX</div>
   </div>
 </footer>
 
 <script>
   (function(){
-    var items = document.querySelectorAll('.project-card, .tl-item, .skillblocks, .sec-head');
+    var items = document.querySelectorAll('.project-card, .xp-item, .skills-table, .sec-head');
     if (!('IntersectionObserver' in window)) return;
     document.documentElement.classList.add('reveal-on');
     var io = new IntersectionObserver(function(entries){
@@ -317,7 +276,7 @@
       });
     }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
     items.forEach(function(el, i){
-      if (el.classList.contains('project-card')) el.style.transitionDelay = ((i % 3) * 80) + 'ms';
+      
       el.classList.add('reveal');
       io.observe(el);
     });
