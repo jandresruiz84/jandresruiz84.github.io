@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bota Force/Torque Sensor Tube Clamp | Jesus Andres Ruiz</title>
+<meta name="description" content="Designed a 3D-printed split clamp that mounts a Bota Medusa force/torque sensor to the wrist exoskeleton's 32 mm tube. The V2 redesign cut peak stress 35% and deflection 60% while fitting the original TRT-500 clamp base.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Bota Force/Torque Sensor Tube Clamp | Jesus Andres Ruiz">
+<meta property="og:description" content="Designed a 3D-printed split clamp that mounts a Bota Medusa force/torque sensor to the wrist exoskeleton's 32 mm tube. The V2 redesign cut peak stress 35% and deflection 60% while fitting the original TRT-500 clamp base.">
+<meta property="og:url" content="https://jandresruiz84.github.io/projects/bota-sensor-clamp.html">
+<meta property="og:image" content="https://jandresruiz84.github.io/images/36-bota-sensor-clamp-v2-render.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Serif:ital,wght@0,500;0,600;1,500&display=swap">
+<link rel="stylesheet" href="../styles.css">
+<script type="importmap">
+  { "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+  } }
+</script>
+<script type="module" src="../viewer.js"></script>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="../index.html" aria-label="Jesus Andres Ruiz, home"><svg class="logo" viewBox="0 0 40 40" aria-hidden="true"><g class="gear"><circle cx="20" cy="20" r="15"/><rect x="16.75" y="2" width="6.5" height="6.5" rx="1.5"/><rect x="16.75" y="2" width="6.5" height="6.5" rx="1.5" transform="rotate(45 20 20)"/><rect x="16.75" y="2" width="6.5" height="6.5" rx="1.5" transform="rotate(90 20 20)"/><rect x="16.75" y="2" width="6.5" height="6.5" rx="1.5" transform="rotate(135 20 20)"/><rect x="16.75" y="2" width="6.5" height="6.5" rx="1.5" transform="rotate(180 20 20)"/><rect x="16.75" y="2" width="6.5" height="6.5" rx="1.5" transform="rotate(225 20 20)"/><rect x="16.75" y="2" width="6.5" height="6.5" rx="1.5" transform="rotate(270 20 20)"/><rect x="16.75" y="2" width="6.5" height="6.5" rx="1.5" transform="rotate(315 20 20)"/></g><circle class="hub" cx="20" cy="20" r="12"/><text x="20" y="24" text-anchor="middle">JR</text></svg></a>
+    <button class="navtoggle" id="navtoggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+    <div class="navlinks" id="navlinks">
+      <a href="../index.html#projects">Projects</a>
+      <a href="../index.html#experience">Experience</a>
+      <a href="../index.html#skills">Skills</a>
+      <a href="../index.html#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+<script>
+  const navtoggle = document.getElementById('navtoggle');
+  const navlinks = document.getElementById('navlinks');
+  navtoggle.addEventListener('click', () => {
+    const open = navlinks.classList.toggle('open');
+    navtoggle.setAttribute('aria-expanded', open);
+  });
+  navlinks.addEventListener('click', (e) => {
+    if (e.target.tagName === 'A') {
+      navlinks.classList.remove('open');
+      navtoggle.setAttribute('aria-expanded', 'false');
+    }
+  });
+</script>
+
+<div class="project-page-head">
+  <div class="wrap">
+    <a class="back-link" href="../index.html#projects">← Back to Projects</a>
+  </div>
+</div>
+
+<section style="padding-top:0;">
+  <div class="wrap">
+    <div class="project">
+      <div class="project-head">
+        <div>
+          <div class="project-tag">Exoskeleton, Structural, FEA</div>
+          <h1 class="project-title">Bota Force/Torque Sensor Tube Clamp</h1>
+        </div>
+        <div class="project-date">NOVEMBER 2026</div>
+      </div>
+      <div class="project-body">
+        <p class="project-summary">Designed a 3D-printed split clamp that mounts a Bota Medusa 6-axis force/torque sensor and its output handle onto the wrist exoskeleton's 32 mm HEBI tube. After a first version passed FEA, I redesigned the top half into a lower, solid cone that is stiffer, easier to assemble, and bolts onto the existing TRT-500 clamp base without reprinting it.</p>
+
+        <div class="spec-grid">
+          <div class="spec-cell"><div class="k">Peak von Mises</div><div class="v">2.91 → 1.88 MPa</div></div>
+          <div class="spec-cell"><div class="k">Max deflection</div><div class="v">0.021 → 0.008 mm</div></div>
+          <div class="spec-cell"><div class="k">Safety factor (PET)</div><div class="v">~19 → ~29</div></div>
+          <div class="spec-cell"><div class="k">Clamp height</div><div class="v">34 → 28 mm</div></div>
+        </div>
+
+        <ul class="findings">
+          <li>Designed the clamp in Fusion around the sensor's real interface: a seat for the Medusa base, an 8-hole M3 bolt circle, and a locating pin, with the bolt pattern rotated so all 8 screw channels clear the clamp's heat-set inserts and can be driven from underneath.</li>
+          <li>Kept the split line, 32.3 mm bore, 40 mm clamp width, and insert spacing identical to the earlier TRT-500 sensor clamp, so the new top half bolts onto the original, already-printed bottom half. I verified this with interference and hole-alignment checks in a full sensor, handle, and tube assembly.</li>
+          <li>Ran static stress studies in Fusion Simulation with a 75 N side load applied at the top of the handle (about 145 to 151 mm above the tube), the bottom half fixed, and PET material properties. V1 showed a 2.91 MPa peak, concentrated where the pedestal necked into the clamp.</li>
+          <li>Redesigned the top as a solid cone that blends from the 40 mm clamp into the 56 mm sensor plate, and lowered it from 34 to 28 mm. That shortened the lever arm and removed the neck: peak stress dropped 35% to 1.88 MPa and deflection dropped 60% to 0.008 mm, a safety factor of about 29 against PET yield.</li>
+          <li>Worked out the system limits beyond the part itself: at a 12 N·m sensor overload rating the sensor tops out near 60 N at the handle, well below the clamp's estimated printed-part failure load of several hundred newtons, so the sensor, not the bracket, sets the usable range.</li>
+          <li>Designed for printing and assembly: no supports needed above the bore, minimal visible holes, and a standard hardware list (8× M3×8 sensor screws, 4× M3×12 clamp screws into heat-set inserts). Printed in PETG with 5 walls and 40% gyroid infill.</li>
+        </ul>
+
+        <div class="model3d">
+          <div class="model3d-bar">
+            <div class="model3d-title">Interactive 3D model</div>
+            <div class="model3d-tabs">
+              <button class="active" data-src="../models/bota-tube-clamp-v2.stl">V2 clamp</button>
+            </div>
+          </div>
+          <div class="model3d-stage">
+            <div class="model3d-status">Loading model…</div>
+            <div class="model3d-hint">Drag to rotate · Scroll or pinch to zoom</div>
+            <button class="model3d-reset" aria-label="Reset view">Reset view</button>
+          </div>
+        </div>
+
+        <div class="gallery">
+          <figure>
+            <img src="../images/36-bota-sensor-clamp-v2-render.jpg" alt="V2 clamp: solid cone top half on the original TRT-500 bottom half" loading="lazy">
+            <figcaption>V2 clamp on the original base</figcaption>
+          </figure>
+          <figure>
+            <img src="../images/39-bota-clamp-v1-von-mises.jpg" alt="V1 FEA, von Mises stress: 2.909 MPa peak at the pedestal neck" loading="lazy">
+            <figcaption>V1 stress, 2.91 MPa peak</figcaption>
+          </figure>
+          <figure>
+            <img src="../images/37-bota-clamp-v2-von-mises.jpg" alt="V2 FEA, von Mises stress: 1.882 MPa peak (35% lower)" loading="lazy">
+            <figcaption>V2 stress, 1.88 MPa peak</figcaption>
+          </figure>
+          <figure>
+            <img src="../images/40-bota-clamp-v1-displacement.jpg" alt="V1 FEA, total displacement: 0.021 mm max" loading="lazy">
+            <figcaption>V1 displacement, 0.021 mm</figcaption>
+          </figure>
+          <figure>
+            <img src="../images/38-bota-clamp-v2-displacement.jpg" alt="V2 FEA, total displacement: 0.008 mm max (60% lower)" loading="lazy">
+            <figcaption>V2 displacement, 0.008 mm</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 class="sec-title">Contact</h2>
+    </div>
+    <p class="contact-lede">Open to internship opportunities in mechanical design, robotics, and hardware engineering.</p>
+    <dl class="titleblock contact-block">
+      <div><dt>Email</dt><dd><a href="mailto:jesus.ruiz4@my.utsa.edu">jesus.ruiz4@my.utsa.edu</a></dd></div>
+      <div><dt>Phone</dt><dd><a href="tel:+19562906269">(956) 290-6269</a></dd></div>
+      <div><dt>LinkedIn</dt><dd><a href="https://www.linkedin.com/in/jesus-andres-ruiz-5855bb349" target="_blank">jesus-andres-ruiz</a></dd></div>
+      <div><dt>Résumé</dt><dd><a href="../resume.pdf" target="_blank">Download PDF</a></dd></div>
+    </dl>
+    <div class="foot-note">Jesus Andres Ruiz · Mechanical Engineering, UTSA Honors College · San Antonio, TX</div>
+  </div>
+</footer>
+
+<div class="lightbox" id="lightbox">
+  <button class="close" id="lightbox-close" aria-label="Close">✕</button>
+  <img id="lightbox-img" src="" alt="">
+  <div class="cap" id="lightbox-cap"></div>
+</div>
+<script>
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const lightboxCap = document.getElementById('lightbox-cap');
+
+  document.querySelectorAll('.gallery img').forEach(img => {
+    img.addEventListener('click', () => {
+      lightboxImg.src = img.src;
+      lightboxImg.alt = img.alt;
+      lightboxCap.textContent = img.alt;
+      lightbox.classList.add('open');
+    });
+  });
+
+  function closeLightbox(){ lightbox.classList.remove('open'); }
+  lightbox.addEventListener('click', closeLightbox);
+  document.getElementById('lightbox-close').addEventListener('click', (e) => { e.stopPropagation(); closeLightbox(); });
+  lightboxImg.addEventListener('click', (e) => e.stopPropagation());
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
+</script>
+
+</body>
+</html>
